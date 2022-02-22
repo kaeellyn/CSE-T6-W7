@@ -1,6 +1,11 @@
 from game.shared.color import Color
 
 class Constants:
+    """A collection of useful variables for the game Greed.
+
+    The Constants class was made to hold a number of variables for us to reference throughout the program. 
+    The hope is that this will allow us to change a variable here without breaking anything within the program itself.
+    """ 
 
     def __init__(self):
         self.FRAME_RATE = 12

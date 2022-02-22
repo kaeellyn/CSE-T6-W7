@@ -15,21 +15,7 @@ from game.shared.color import Color
 from game.shared.point import Point
 from game.shared.constants import Constants
 
-# Set the constants for use in the program
-
 constants = Constants()
-
-# FRAME_RATE = constants.FRAME_RATE
-# MAX_X = constants.MAX_X
-# MAX_Y = constants.MAX_Y
-# CELL_SIZE = constants.CELL_SIZE
-# FONT_SIZE = constants.FONT_SIZE
-# COLS = constants.COLS
-# ROWS = constants.ROWS
-# CAPTION = constants.CAPTION
-# WHITE = constants.WHITE
-# DEFAULT_ARTIFACTS = constants.DEFAULT_ARTIFACTS
-
 
 def main():
     
@@ -57,41 +43,20 @@ def main():
     cast.add_actor("robots", robot)
     
     # create the gems and rocks
-    for n in range(constants.DEFAULT_ARTIFACTS):
-        i = 0
-        j = random.randint(42, 43)
-        if j == 42:
-            i = 42
-        else: 
-            i = 111
-            
-        text = chr(i)
-
-        x = random.randint(1, constants.COLS - 1)
-        y = random.randint(1, constants.ROWS - 1)
-        position = Point(x, y)
-        position = position.scale(constants.CELL_SIZE)
-
-        r = random.randint(0, 255)
-        g = random.randint(0, 255)
-        b = random.randint(0, 255)
-        color = Color(r, g, b)
-        
-        if i == 42:
+    for _ in range(constants.DEFAULT_ARTIFACTS):
+        gem_or_rock = random.randint(1, 2)
+        if gem_or_rock == 1:
             artifact = Gem()
-        elif i == 111:
+        elif gem_or_rock == 2:
             artifact = Rock()
         else:
             print("There was an error in finding whether this is a rock or a gem in __main__.py")
         
-        artifact.set_text(text)
-        artifact.set_font_size(constants.FONT_SIZE)
-        artifact.set_color(color)
-        artifact.set_position(position)
+        artifact.create_random_values()
 
-        if i == 42:
+        if gem_or_rock == 1:
             cast.add_actor("gems", artifact)
-        elif i == 111:
+        elif gem_or_rock == 2:
             cast.add_actor("rocks", artifact)
         
     

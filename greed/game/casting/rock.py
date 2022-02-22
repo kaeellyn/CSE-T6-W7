@@ -6,7 +6,11 @@
 from game.casting.actor import Actor
 
 class Rock(Actor):
-    """"""
+    """A small individual actor intended to reduce the score of the player upon collision.
+
+    Attributes:
+        Actor (super): The Actor class
+    """
     def __init__(self):
         super().__init__()
         

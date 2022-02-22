@@ -6,7 +6,11 @@
 from game.casting.actor import Actor
 
 class Gem(Actor):
-    """"""
+    """A small individual actor intended to raise the score of the player upon collision.
+
+    Attributes:
+        Actor (super): The Actor class
+    """
     def __init__(self):
         super().__init__()
 
