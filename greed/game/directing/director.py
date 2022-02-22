@@ -1,3 +1,7 @@
+from game.shared.point import Point
+from game.shared.constants import Constants
+
+constants = Constants()
 # Direct paste from rfk
 
 class Director:
@@ -19,7 +23,9 @@ class Director:
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
-        
+        self._score = 0
+        self._frames = 0
+        ()
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
 
@@ -51,17 +57,45 @@ class Director:
         """
         banner = cast.get_first_actor("banners")
         robot = cast.get_first_actor("robots")
-        artifacts = cast.get_actors("artifacts")
 
-        banner.set_text("")
+        gems = cast.get_actors("gems")
+        rocks = cast.get_actors("rocks")
+        
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
         
-        for artifact in artifacts:
-            if robot.get_position().equals(artifact.get_position()):
-                message = artifact.get_message()
-                banner.set_text(message)    
+
+        if self._frames % 4 == 0:
+            for gem in gems:
+                gem.set_velocity(Point(0, constants.CELL_SIZE))
+                gem.move_next(max_x, max_y)
+                if robot.get_position().equals(gem.get_position()):
+                    self._score += 1
+                    cast.remove_actor("gems", gem)
+
+            for rock in rocks:
+                rock.set_velocity(Point(0, constants.CELL_SIZE))
+                rock.move_next(max_x, max_y)
+                if robot.get_position().equals(rock.get_position()):
+                    self._score -= 1
+                    cast.remove_actor("rocks", rock)
+
+            banner.set_text(f"Score: {self._score}")
+
+        if self._frames % 12 == 0:
+            for gem in gems:
+                if Point.get_y(gem.get_position()) >= constants.MAX_Y - constants.CELL_SIZE:
+                    cast.remove_actor("gems", gem)
+
+            # for rock in rocks:
+            #     rock.set_velocity(Point(0, 5))
+            #     rock.move_next(max_x, max_y)
+            #     if robot.get_position().equals(rock.get_position()):
+            #         self._score -= 1
+
+
+        self._frames += 1
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
