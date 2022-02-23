@@ -9,6 +9,6 @@ cse210 team 6 repository for week 7 (greed game)
 ## Authors
 ---
 * # TODO: Jared Brooks, drakelongtoot@gmail.com
-* # TODO: Add your name and email here
+* # TODO: Kaelyn Papa, kaelyn.papa1@gmail.com
 * # TODO: Liam Harris, 8harrisl@gmail.com
 * # TODO: Add your name and email here
