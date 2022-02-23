@@ -11,4 +11,4 @@ cse210 team 6 repository for week 7 (greed game)
 * # TODO: Jared Brooks, drakelongtoot@gmail.com
 * # TODO: Kaelyn Papa, kaelyn.papa1@gmail.com
 * # TODO: Liam Harris, 8harrisl@gmail.com
-* # TODO: Add your name and email here
+* # TODO: Cristian De La Hoz Escorcia, del21026@byui.edu
