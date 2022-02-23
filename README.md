@@ -12,4 +12,4 @@ cse210 team 6 repository for week 7 (greed game)
 * # TODO: Kaelyn Papa, kaelyn.papa1@gmail.com
 * # TODO: Liam Harris, 8harrisl@gmail.com
 * # TODO: Cristian De La Hoz Escorcia, del21026@byui.edu
-* * # TODO:  Hermann Koffi, lakoffmanie2018@gmail.com
+* # TODO:  Hermann Koffi, lakoffmanie2018@gmail.com
