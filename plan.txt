@@ -36,79 +36,62 @@ How the files interact with one another:
 --Main--
 
 __main__.py:
-    imports director
-    create the cast, robot, artifacts by calling the classes
-    uses director to start the game loop
+    creates the cast of the robot and artifacts by calling the Gem, Rock, and Cast classes.
+    uses Director to start the game loop, feeding it the cast.
     
-
 
 --Directing--
 
 director.py:
-    imports ______
     Holds the gameplay loop, pieces together each part to make the game work.
-    Outputs the gameplay loop to __main__.py
-
+    The gameplay loop consists of each frame checking for collision, moving the cast appropriately, and updating points.
 
 
 --Services--
 
 keyboard_service.py:
-    imports Pyray and class Point
-    Takes arrow key inputs to move the player character on the screen
-    Outputs to director, ---And others?---
+    Takes arrow key inputs to move the player character on the screen on command
 
 video_service.py:
-    imports Pyray
-    Outputs the game state
-    This is what files use this program
-    
+    Updates and shows the content of the screen, such as the score, and where each cast member is and what they look like.
 
 
 --Shared--
 
 color.py
-    imports ______
-    This is what this does
-    This is what files use this program
+    Is a class used by others to handle colors. Works primarily in RGB
 
 point.py
-    imports ______
-    This is what this does
-    This is what files use this program
-
-
+    Is a class used by others to handle (x, y) points on a graph. Used to determine where on the screen a cast member is.
+    
+constants.py
+    Is a class used by others to have universal variables that are able to be changed without breaking the program (as bad).
+    
 
 --Casting--
     
 actor.py
-    imports ______
-    This is what this does
-    This is what files use this program
+    Is the base of the Gem and Rock classes, holds functions and variables that are necessary for a cast member. 
+    Variables such as color, text content, velocity, size and position.
 
 cast.py
-    imports ______
-    This is what this does
-    This is what files use this program
+    Handles large amounts of actors.
 
 gem.py
     Inherits Actor from actor.py
-    Provides a gem instance to be called by __main__. When the player runs into a gem they receive +1 score.
+    Provides a gem instance to be called by __main__. When the player collides with a gem they receive +1 score.
     Outputs to __main__.py
 
 
 rock.py
     inherits Actor from actor.py
-    Provides a rock instance to be called by __main__. When the player runs into a rock they receive -1 score, and flash for 1 second.
+    Provides a rock instance to be called by __main__. When the player collides with a rock they receive -1 score.
     Outputs to __main__.py
 
 
 
 
-Unsorted ideas:
-
-If we assume a frame rate of 12, we could set all of our actors to change their y position by 1 step going down every 8 or 12 frames using some logic. 
-    Say frame_count = 0, every frame frame_count += 1, if frame_count >= 12 then make frame_count = 0 and all our actors step down one except our main character.
+An idea we didn't implement:
     
 We could display a retro style visual indicator of our player being hurt by phasing it in and out on odd or even frames. 
     We could have a modulus_variable, and when the player is hurt say modulus_variable = frame_count % 2, 
